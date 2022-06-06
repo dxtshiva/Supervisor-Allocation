@@ -40,4 +40,20 @@
 
 ##### • You also need to create the database sturcture in MySQL in order to ensure proper execution of the project. 
 
-##### • There is no need to manually create the database structure as it has been defined in the Supervisor.sql file. Please refer to Step .. for creating the database structure properly.
+##### • There is no need to manually create the database structure as it has been defined in the Supervisor.sql file. Please refer to Step .. for creating the database structure directly .
+
+### Steps to start the program
+
+##### 1. Download and install MySQL from https://dev.mysql.com/downloads/installer/ . This project uses MySQL 5.1.
+
+##### 2. Use "pip install mysql" to install mysql in python.
+
+##### 3. Use "pip install mysql-connector" to install ODBC connector for mysql.
+
+##### 4. Modify the configuaration at line number 299 of the SuperAllocation.py file and change user='your_username',passwd="your_password". Replace your_username with the username of the configured MySQL username in step 1 and your password with the configured password in step 1.
+
+##### 5. Open MySQL and create a database python using the command "create database python;" followed by "use python" .
+
+##### 6. Open command prompt in administrator mode in the folder and type the following commnad : "mysqldump -u your_username -p python >Supervisor.sql" and hit enter. Now in the MySQL type "show tables". A list of three tables namely Student, Supervisor, and Temp will be visible. In case there is any error or issue kindly refer to https://www.sqlshack.com/how-to-backup-and-restore-mysql-databases-using-the-mysqldump-command/#:~:text=Mysqldump%20is%20a%20command%2Dline,delimited%20text%2C%20or%20CSV%20format .
+
+##### 7. Now your project is ready to be executed. Run the SupervisorAllocation.py file either directly or through a code editor and you will have a tkinter page opened in the taskbar. Open that page and you will be able to navigate through the GUI.
