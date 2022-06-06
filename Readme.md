@@ -50,7 +50,7 @@
 
 ##### 3. Use "pip install mysql-connector" to install ODBC connector for mysql.
 
-##### 4. Modify the configuaration at line number 299 of the SupervisorAllocation.py file and change user='your_username',passwd="your_password".Replace your_username with the username of the configured MySQL username in step 1 and your password with the configured password in step 1.
+##### 4. Modify the configuaration at line number 299 of the SupervisorAllocation.py file and change user='your_username', passwd="your_password". Replace your_username with the username of the configured MySQL username in step 1 and your password with the configured password in step 1.
 
 ##### 5. Open MySQL and create a database python using the command "create database python;" followed by "use python" .
 
