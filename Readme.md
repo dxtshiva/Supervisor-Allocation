@@ -19,3 +19,15 @@
 ### Registration Page
 
 ##### It asks for the details of the user and register him/her to the database.
+
+### Request Page
+
+##### It takes registration  number and username of the student as input and assigns him/her the supervisor based on the specialization 
+
+### Student Page
+
+##### It displays the details of the supervisor allocated to the student
+
+### Supervisor Page
+
+##### It displays a list of all the studdents that have been assigned to the supervisor
