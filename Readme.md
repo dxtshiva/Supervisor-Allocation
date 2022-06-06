@@ -34,10 +34,10 @@
 
 ### Points to remember
 
-##### You need to install mysql and configure it beforehand.
+##### • You need to install mysql and configure it beforehand.
 
-##### The configuaration of mysql needs to be specified in the Supervisor.py file line number .. in order to run the project properly.
+##### • The configuaration of mysql needs to be specified in the Supervisor.py file line number .. in order to run the project properly.
 
-##### You also need to create the database sturcture in MySQL in order to ensure proper execution of the project. 
+##### • You also need to create the database sturcture in MySQL in order to ensure proper execution of the project. 
 
-##### There is no need to manually create the database structure as it has been defined in the Supervisor.sql file. Please refer to Step .. for creating the database structure properly.
+##### • There is no need to manually create the database structure as it has been defined in the Supervisor.sql file. Please refer to Step .. for creating the database structure properly.
