@@ -229,7 +229,7 @@ class StuPage(tk.Frame):
         tk.Label(self,font=('Times New Roman',16),fg='black',text=detail1[0][1]).grid(row=1,column=4,padx='30',pady='40')
         tk.Label(self,text='Email',font=("Times New Roman",16),fg='black').grid(row=2,column=0,padx='30',pady='40')
         tk.Label(self,font=('Times New Roman',16),fg='black',text=detail1[0][4]).grid(row=2,column=1,padx='30',pady='40')
-        tk.Label(self,text='Supervisor Name',font=("Times New Roman",16),fg='black').grid(row=2,column=3,padx='30',pady='40')
+        tk.Label(self,text='Supervisor Phone Number',font=("Times New Roman",16),fg='black').grid(row=2,column=3,padx='30',pady='40')
         tk.Label(self,font=('Times New Roman',16),fg='black',text=detail1[0][3]).grid(row=2,column=4,padx='30',pady='40')
         tk.Label(self,text='Specialization and Description',font=("Times New Roman",16),fg='black').grid(row=3,column=0,padx='30',pady='40')
         tk.Label(self,text=detail1[0][2]+'\n'+dictr[detail1[0][2]],font=('Times New Roman',16),fg='black',height=10,width=100).grid(row=3,column=1,columnspan=8,padx='30',pady='40')

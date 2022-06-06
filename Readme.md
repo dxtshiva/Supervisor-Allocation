@@ -57,3 +57,21 @@
 ##### 6. Open command prompt in administrator mode in the folder and type the following commnad : "mysqldump -u your_username -p python >Supervisor.sql" and hit enter. Now in the MySQL type "show tables". A list of three tables namely Student, Supervisor, and Temp will be visible. In case there is any error or issue kindly refer to https://www.sqlshack.com/how-to-backup-and-restore-mysql-databases-using-the-mysqldump-command/#:~:text=Mysqldump%20is%20a%20command%2Dline,delimited%20text%2C%20or%20CSV%20format .
 
 ##### 7. Now your project is ready to be executed. Run the SupervisorAllocation.py file either directly or through a code editor and you will have a tkinter page opened in the taskbar. Open that page and you will be able to navigate through the GUI.
+
+<br><br>
+<img src = "./home.jpg">
+
+<br><br>
+<img src = "./login.jpg">
+
+<br><br>
+<img src = "./new user.jpg">
+
+<br><br>
+<img src = "./request.jpg">
+
+<br><br>
+<img src = "./student.jpg">
+
+<br><br>
+<img src = "./supervisor.jpg">
