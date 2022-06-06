@@ -31,3 +31,13 @@
 ### Supervisor Page
 
 ##### It displays a list of all the studdents that have been assigned to the supervisor
+
+### Points to remember
+
+##### You need to install mysql and configure it beforehand.
+
+##### The configuaration of mysql needs to be specified in the Supervisor.py file line number .. in order to run the project properly.
+
+##### You also need to create the database sturcture in MySQL in order to ensure proper execution of the project. 
+
+##### There is no need to manually create the database structure as it has been defined in the Supervisor.sql file. Please refer to Step .. for creating the database structure properly.
