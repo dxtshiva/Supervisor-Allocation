@@ -1,12 +1,16 @@
+# importing the libraries required
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 import mysql.connector
 import random as rd
 
+# Class to define the start page
 class Start(tk.Tk):
     rname='14526'
     uname='147894'
+    
+    # Initializing the start page with default values and adding all the pages to the frame
     def __init__(self, *args, **kwargs):
         
         tk.Tk.__init__(self, *args, **kwargs)
@@ -28,15 +32,17 @@ class Start(tk.Tk):
 
         self.show_frame(StartPage)
 
+    # Function to show frame i.e. the page that has been passed as the parameter
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
-        
+    
+    # Function to confirm the user choice   
     def sure(self):
         vara=messagebox.askquestion('Confirm','Are you sure to logout?')
         if vara=='yes':
             self.show_frame(StartPage)
-               
+    # Function to verify the user inputs while logging in          
     def verify(self,u,p,h):
         if u.get()=='' or p.get=='':
             messagebox.showinfo('Alert','Username or password cannot be blank.')
@@ -67,7 +73,7 @@ class Start(tk.Tk):
                     self.show_frame(SupPage)   
                     
    
-        
+    # Function to check user inputs while registration i.e. form validation function   
     def check(self,fn,us,ps,cp,rg,mn,em,ty,sp):
         a=fn.get().strip()
         b=us.get().strip()
@@ -91,9 +97,6 @@ class Start(tk.Tk):
                 data=crsr.fetchall()
             
             if not data:
-                #crsr.execute("select uid from supervisor where specialization='"+i+"';")
-                #spr=crsr.fetchall()
-                #sid=spr[rd.randint(0,len(spr)-1)][0]
                 if h=='Student':
                     crsr.execute("insert into student values('"+a+"','"+e+"','"+i+"','"+f+"','"+g+"','"+b+"','"+c+"','null') ;")
                 else:
@@ -104,7 +107,8 @@ class Start(tk.Tk):
                 messagebox.showerror('Error',"Username already exists. Please retry.")
             elif data[0][1]==e:
                 messagebox.showerror('Error','Reg.No/UID already registered.')
-                
+    
+    # Function to allocate supervisor to a registered student 
     def submit(self,regno,usrn):
         p=regno.get()
         q=usrn.get()
@@ -128,7 +132,8 @@ class Start(tk.Tk):
                     crsr.execute("select name from supervisor where uid='"+sid+"';")
                     udet=crsr.fetchall()
                     messagebox.showinfo("Success",udet[0][0]+", UID: "+sid+" has been allocated as you supervisor.")
-                    
+
+# Class to define the properties of home page
 class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent)
@@ -140,6 +145,7 @@ class StartPage(tk.Frame):
         tk.Button(self, text="NEW USER", fg="green" ,height=2,width=8,font=("Times New Roman",12),command=lambda: controller.show_frame(RegrPage)).grid(row=2,column=3);
         tk.Button(self, text="REGISTER FOR SUPERVISOR", fg="green" ,height=2,width=25,font=("Times New Roman",12),command=lambda: controller.show_frame(RsPage)).grid(row=2,column=4);
 
+# Class to denife the properties of the registration page
 class RegrPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent)
@@ -183,7 +189,8 @@ class RegrPage(tk.Frame):
         lk1.configure(font=("Times New Roman",16),width=25,height=1)
         lk1.grid(row = 5,column = 1)
         tk.Button(self ,text="Submit",font=("Times New Roman",15),command=lambda: controller.check(fn,us,ps,cp,rg,mn,em,dflt.get(),dflt1.get())).grid(row=6,column=2)
-        
+
+# Class to define the properties of the Login Page       
 class LoginPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent)
@@ -206,6 +213,7 @@ class LoginPage(tk.Frame):
         lk.grid(row = 3,column = 4)
         tk.Button(self, text="LOGIN", fg="green" ,height=2,width=8,font=("Times New Roman",12),command=lambda:controller.verify(uname,pwd,dflt.get())).grid(row=5,column=2,columnspan=3,pady=3);
 
+# Class to define the properties of the student home page
 class StuPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent) 
@@ -225,7 +233,8 @@ class StuPage(tk.Frame):
         tk.Label(self,font=('Times New Roman',16),fg='black',text=detail1[0][3]).grid(row=2,column=4,padx='30',pady='40')
         tk.Label(self,text='Specialization and Description',font=("Times New Roman",16),fg='black').grid(row=3,column=0,padx='30',pady='40')
         tk.Label(self,text=detail1[0][2]+'\n'+dictr[detail1[0][2]],font=('Times New Roman',16),fg='black',height=10,width=100).grid(row=3,column=1,columnspan=8,padx='30',pady='40')
-        
+
+# Class to define the properties of Supervisor Home Page        
 class SupPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent)    
@@ -272,7 +281,7 @@ class SupPage(tk.Frame):
         for i, (regno,username,uname,email) in enumerate(tempList, start=1):
             listBox.insert("", "end", values=(regno,username,uname,email))
                 
-
+# Class to define the properties of the supevisor request page
 class RsPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent) 
@@ -286,11 +295,13 @@ class RsPage(tk.Frame):
         tk.Entry(self,font=("Times New Roman",18),textvariable=usrn).grid(padx= 30,row = 3,column = 3)
         tk.Button(self, text="Submit", fg="green" ,height=1,width=8,font=("Times New Roman",12),command=lambda:controller.submit(regno,usrn)).grid(row=4,column=2,columnspan=3,pady=40);
         
+# Initializing the MySQL connection with the configured SQL details
 mydb = mysql.connector.connect(host="localhost",user='root',passwd="123",buffered=True)
 crsr = mydb.cursor()
 crsr.execute("use python;")
 crsr.execute('set autocommit=1;')
 
+# Dictionary that stores details of all the Specializations
 dictr={"Hello":"Null","Electronics Hardwaring":"\nElectronic hardwaring consists of interconnected electronic components which perform analog \n or logic operations on received and locally stored information to produce as output or store \nresulting new information or to provide control for output actuator mechanisms.",
        "Computer Architecture":"\nComputer architecture is a set of rules and methods that describe the functionality, \n organization, and implementation of computer systems. Some definitions\n of architecture define it as describing the capabilities and programming model \nof a computer but not a particular implementation.",
        "Electrical Devices":"\nElectrical devices take the energy of electrical current, the flow of electrons in a conductor, and transform it in simple ways into some other form of energy—most likely light, heat, or motion. An electric device is one that directly uses electrical energy to perform a task.",
@@ -298,5 +309,6 @@ dictr={"Hello":"Null","Electronics Hardwaring":"\nElectronic hardwaring consists
        "Cyber Security":"\n Cyber security refers to the body of technologies, processes, \n and practices designed to protect networks, devices, programs, and \n data from attack, damage, or unauthorized access. Cyber \n security may also be referred to as information technology security.",
        "Data Analytics":"\nData analytics is the science of analyzing raw data in order \n to make conclusions about that information. Many of the \n techniques and processes of data analytics have been automated into \n mechanical processes and algorithms that work over raw data for human consumption."}
 
+# Starting the main program
 sp=Start()
 sp.mainloop()
